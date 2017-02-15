@@ -49,7 +49,10 @@ void draw_octant7(int x0, int y0, int x1, int y1, screen s, color c) {
 void draw_octant8(int x0, int y0, int x1, int y1, screen s, color c) {
   int A = y1 - y0, B = x0 - x1, d = 2 * A - B;
   int x = x0, y = y0;
-  while (
+  while (x <= x1){
+    plot(s, c, x, y);
+    if (d < 0) y--, d -= 2 * B;
+    x++, d += 2 * A;
 }
 
 void draw_vertical(int x0, int y0, int x1, int y1, screen s, color c) { 
