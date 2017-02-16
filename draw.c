@@ -66,15 +66,12 @@ void draw_else(int x0, int y0, int x1, int y1, screen s, color c) {
 //Insert your line algorithm here
 void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
   float slope = (float)(y1 - y0) / (float)(x1 - x0);
-  printf("slope = %f\n", slope);
-  int octant = calcOctant(slope);
-  printf("octant = %d\n", octant);
+  int octant = calcOctant(slope);  
   if (x0 > x1){ //accounts for octants 3-6, flips endpoints
     int tempX, tempY;
     tempX = x1, x1 = x0, x0 = tempX;
     tempY = y1, y1 = y0, y0 = tempY;
   }
-  printf("(x0, y0) = (%d, %d), (x1, y1) = (%d, %d)\n", x0, y0, x1, y1);
   if (octant == 0) draw_else(x0, y0, x1, y1, s, c);
   if (octant == 1) draw_octant1(x0, y0, x1, y1, s, c);
   if (octant == 2) draw_octant2(x0, y0, x1, y1, s, c);
